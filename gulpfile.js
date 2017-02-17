@@ -4,6 +4,7 @@ var sass        = require('gulp-sass');
 var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
 var jade        = require('gulp-jade');
+var babel       = require('gulp-babel');
 
 var messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
@@ -85,6 +86,16 @@ gulp.task('watch', function () {
     gulp.watch('_jadefiles/*.jade', ['jade']);
 });
 
+/**
+ * compiling es6 stuff using babel
+ */
+gulp.task('babel', function () {
+    return gulp.src('assets/js/**')
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest('dist'));
+});
 
 
 
@@ -92,4 +103,4 @@ gulp.task('watch', function () {
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['browser-sync', 'watch', 'babel']);
