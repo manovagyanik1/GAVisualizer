@@ -30,21 +30,18 @@
 
 // columns
 .col-1
-  width: 320px
-  padding: 0 10px
-  box-sizing: border-box
-
-.push-right
-  margin-left: 330px
+  max-width: 300px
+  margin: 0 10px
+  background: pink
 
 .col-2
-  max-width: 640px
-  padding: 0 10px
-  box-sizing: border-box
-  width: 100%
+  max-width: 620px
+  margin: 0 10px
+  background: honeydew
 
 .col-50
   width: 50%
+  background: yellow
 
 
 @media (max-width: 640px)
@@ -52,27 +49,7 @@
     display: block
 
   .col-1
-    width: 100%
+    max-width: 100%
 
   .col-50
     width: auto
-
-  .push-right
-    margin-left: 0
-
-
-
-// typography
-.home-lead
-  line-height: 1.1
-  font-size: 36px
-
-  &.outdented
-    text-indent: -0.8em
-
-@media (max-width: 640px)
-  .home-lead
-    text-align: center
-
-    &.outdented
-      text-indent: 0
