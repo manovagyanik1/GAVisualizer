@@ -1,4 +1,4 @@
-import {CLIENT_ID} from './constants.js';
+import Gen from './gen.js';
 
 (function(w,d,s,g,js,fjs){
 	console.log('trying to load gapi');
@@ -10,53 +10,29 @@ import {CLIENT_ID} from './constants.js';
 
 gapi.analytics.ready(function() {
 
-  // Step 3: Authorize the user.
   console.log('gapi ready now');
+  Gen.authorizeUser();
+  var viewSelectors = [];
+  var timelines = [];
 
-  gapi.analytics.auth.authorize({
-    container: 'auth-button',
-    clientid: CLIENT_ID,
-  });
+  // Create the view selector.
+  viewSelectors[0] = Gen.getViewSelector('view-selector1');
 
-  // Step 4: Create the view selector.
-
-  var viewSelector = new gapi.analytics.ViewSelector({
-    container: 'view-selector'
-  });
-
-
-  // Step 5: Create the timeline chart.
-
-  var timeline = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
-    query: {
-      'dimensions': 'ga:date',
-      'metrics': 'ga:sessions',
-      'start-date': '30daysAgo',
-      'end-date': 'yesterday',
-    },
-    chart: {
+  // Create the timeline chart.
+  timelines[0] = Gen.getTimeLine({
+      dimensions: 'ga:date',
+      metrics: 'ga:sessions',
+      startDate: '30daysAgo',
+      endDate: 'yesterday',
       type: 'LINE',
-      container: 'timeline'
-    }
+      container: 'timeline1'
   });
 
-  // Step 6: Hook up the components to work together.
+  Gen.initAuth({viewSelectors, timelines});
+  Gen.initChartDefaults();
 
-  gapi.analytics.auth.on('success', (response) => {
-    viewSelector.execute();
-  });
-
-  gapi.analytics.auth.on('error', function(response) {
-    console.log(response);
-  });
-
-  viewSelector.on('change', function(ids) {
-    var newIds = {
-      query: {
-        ids: ids
-      }
-    }
-    timeline.set(newIds).execute();
+  viewSelectors.map((v, i) => {
+    Gen.onViewSelectorChange(v);
+    // Gen.generalExecuteTimeLine({viewSelector: v, timeline: timelines[i]});
   });
 });

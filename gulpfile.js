@@ -85,7 +85,8 @@ gulp.task('es6', function() {
     .bundle()
     .on('error',gutil.log)
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('_site/assets/js'));
+    .pipe(gulp.dest('_site/assets/js'))
+    .pipe(browserSync.reload({stream:true}))
 });
 
 
