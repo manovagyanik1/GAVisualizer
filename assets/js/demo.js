@@ -1,3 +1,5 @@
+import {CLIENT_ID} from './constants.js';
+
 (function(w,d,s,g,js,fjs){
 	console.log('trying to load gapi');
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
@@ -11,8 +13,6 @@ gapi.analytics.ready(function() {
   // Step 3: Authorize the user.
   console.log('gapi ready now');
 
-  var CLIENT_ID = '911222093420-qd8u5rusu5d4tt7pm7j1fbh7vvcbmfe5.apps.googleusercontent.com';
-
   gapi.analytics.auth.authorize({
     container: 'auth-button',
     clientid: CLIENT_ID,
@@ -23,6 +23,7 @@ gapi.analytics.ready(function() {
   var viewSelector = new gapi.analytics.ViewSelector({
     container: 'view-selector'
   });
+
 
   // Step 5: Create the timeline chart.
 
@@ -42,7 +43,7 @@ gapi.analytics.ready(function() {
 
   // Step 6: Hook up the components to work together.
 
-  gapi.analytics.auth.on('success', function(response) {
+  gapi.analytics.auth.on('success', (response) => {
     viewSelector.execute();
   });
 
