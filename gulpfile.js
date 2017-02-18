@@ -89,14 +89,6 @@ gulp.task('es6', function() {
     .pipe(browserSync.reload({stream:true}))
 });
 
-
-gulp.task('scripts', function() {
-    browserify(['myEntryPoint.js', 'myModule.js'])
-    .pipe(source('bundle.js')
-    .pipe(gulp.dest('dist/scripts')));
-});
-
-
 /**
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync

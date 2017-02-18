@@ -459,14 +459,9 @@ body {
     -ms-flex-pack: justify;
         justify-content: space-between; }
   .home-wrap header .logo {
-    overflow: hidden;
-    text-indent: 101%;
-    white-space: nowrap;
     max-width: 135px;
-    background-image: url(/assets/img/logo-tn.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    font-size: 4em;
+    color: black;
     height: 80px;
     padding: 0;
     margin: 0; }
