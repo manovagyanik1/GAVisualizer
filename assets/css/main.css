@@ -458,6 +458,8 @@ body {
         flex-direction: column;
     -ms-flex-pack: justify;
         justify-content: space-between; }
+    .home-wrap header .header-position button {
+      font-size: 1.5em; }
   .home-wrap header .logo {
     max-width: 135px;
     font-size: 4em;
@@ -596,6 +598,23 @@ body {
 .col-50 {
   width: 50%;
   background: yellow; }
+
+.slider {
+  width: 100%; }
+  .slider.projection {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+        flex-direction: row;
+    overflow: hidden;
+    width: 1000px; }
+  .slider .Chartjs {
+    width: 1000px; }
+    .slider .Chartjs.hide {
+      display: none;
+      opacity: 1;
+      width: 0px;
+      height: 0px; }
 
 .ActiveUsers {
   background: #f4f2f1;

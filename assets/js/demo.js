@@ -8,6 +8,43 @@ import Gen from './gen.js';
   fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
 }(window,document,'script'));
 
+$(document).ready(function(){
+  function showNext() {
+     if(!$('.slider').hasClass('projection')){
+      $('.slider').addClass('projection');
+    }
+    var l = $('.Chartjs').length;
+    for (var i=0; i<l-1; i++) {
+      var element = $($('.Chartjs')[i]);
+      if(!element.hasClass('hide')){
+        element.addClass('hide');
+        break;
+      }
+      if(i === l-2){
+        $('.Chartjs').removeClass('hide');
+      }
+    }
+  }
+
+  $('#btnProject').click(function(){
+   //showNext();
+   repeat();
+  });
+
+  function repeatNext() {
+    showNext();
+    repeat();
+  }
+
+  function repeat() {
+    window.setInterval(() => {
+      repeatNext();
+    }, 5000);
+  }
+
+  // repeat();
+});
+
 gapi.analytics.ready(function() {
 
   console.log('gapi ready now');

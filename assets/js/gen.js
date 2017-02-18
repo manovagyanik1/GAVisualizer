@@ -352,9 +352,9 @@ class Gen {
 
 	static initChartDefaults() {
 		// Set some global Chart.js defaults.
-		Chart.defaults.global.animationSteps = 60;
+		Chart.defaults.global.animationSteps = 20;
 		Chart.defaults.global.animationEasing = 'easeInOutQuart';
-		Chart.defaults.global.responsive = true;
+		Chart.defaults.global.responsive = false;
 		Chart.defaults.global.maintainAspectRatio = false;
 	}
 
