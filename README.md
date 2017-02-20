@@ -1,7 +1,3 @@
-Working Files for TravisNeilson.com v7
-=============================
-
-![Project Preview](preview.jpg)
 
 ## System Preparation
 
